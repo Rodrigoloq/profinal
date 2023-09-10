@@ -25,17 +25,15 @@
 
     //recueprar datos del formulario html
 
-    $id = $_POST["txtid"];
-
     $nombre = $_POST["txtnombre"];
 
     $descripcion = $_POST["txtdescripcion"];
 
     //agregar una sentencia sql para insertar datos
 
-    $sqlinsert = "insert into Tb_Categorias(Id_Cat,nombre,Des_Cat)
+    $sqlinsert = "insert into Tb_Categorias(nombre,Des_Cat)
 
-    values('$id','$nombre','$descripcion')";
+    values('$nombre','$descripcion')";
 
     //se ejecuta la sentencia sql 
 
