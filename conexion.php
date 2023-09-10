@@ -8,9 +8,7 @@
 </head>
 
 <body>
-    <?php
-
-    header("Access-Control-Allow-Origin: *");
+    <?php    
 
     function fnconexion()
     {
