@@ -15,7 +15,7 @@ if ($conexion->connect_error) {
 }
 
 // Consulta SQL SELECT
-$sql = 'SELECT * FROM Libros';
+$sql = 'SELECT * FROM Tb_Categorias';
 
 $resultado = $conexion->query($sql);
 
