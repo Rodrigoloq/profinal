@@ -1,5 +1,8 @@
 <?php
-    require_once("conexion.php");
+    include("conexion.php");
+
+    $conexion = fnconexion();
+
     $usuario = $_POST["usuario"];
     $clave = $_POST["clave"];
 
