@@ -6,7 +6,7 @@
     $usuario = $_POST["usuario"];
     $clave = $_POST["clave"];
 
-    $resultado = $conexion->query("SELECT * FROM Tb_Usuario WHERE Login_usuario = $usuario");
+    $resultado = $conexion->query("SELECT * FROM Tb_Usuario WHERE Login_usuario = '$usuario'");
 
     if ($resultado->num_rows == 1) {
         $fila = $resultado->fetch_assoc();
