@@ -11,7 +11,7 @@
     if (mysqli_num_rows($rs) == 1) {
         $row = mysqli_fetch_assoc($rs);
         if ($row["Pass_Usuario"] == $clave) {
-            $res[] = array_map("utf8_encode", $row);
+            $res[] = array_map(NULL, $row);
             echo json_encode($res);
         } else {
             echo "-2";
