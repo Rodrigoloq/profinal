@@ -1,3 +1,11 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Base de datos</title>
+</head>
+<body>
 <?php
 header("Access-Control-Allow-Origin: *");
 
@@ -25,3 +33,5 @@ function fnconexion()
     return $conexion;
 }
 ?>
+</body>
+</html>
