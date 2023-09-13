@@ -21,4 +21,4 @@
     }
     mysqli_close($cn);
     //cerrar la conexion a la base de datos
-    
+?>
