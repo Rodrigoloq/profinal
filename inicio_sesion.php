@@ -3,8 +3,8 @@
 
     $cn = fnconexion();
 
-    $usuario = $_POST["usuario"];
-    $clave = $_POST["clave"];
+    $usuario = $_POST["usuario"] ?? null;
+    $clave = $_POST["clave"] ?? null;
     $rs = mysqli_query(	$cn,
         "select * from Tb_Usuario 
     where Login_usuario='" . $usuario . "'");
