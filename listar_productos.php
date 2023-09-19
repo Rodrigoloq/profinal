@@ -4,7 +4,7 @@ include("conexion.php");
 
 $conexion = fnconexion();
 
-$sql = 'CALL railway.Sp_Listar_Proveedores()';
+$sql = 'call railway.Sp_Listar_Productos()';
 
 $resultado = $conexion->query($sql);
 
