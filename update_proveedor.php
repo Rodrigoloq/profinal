@@ -57,9 +57,9 @@
     $stmt->bind_param("issssissssss", $idproveedor, $nombre, $apellido, $nombrecontacto, $cargocontacto, $estado, $direccion, $pais, $departamento, $provincia, $distrito, $usuario);
 
     if ($stmt->execute()) {
-        echo "Operación exitosa";
+        echo "-1";
     } else {
-        echo "Error al ejecutar el procedimiento almacenado: " . $stmt->error;
+        echo "-2";
     }
 
     // Cerrar la conexión

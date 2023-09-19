@@ -44,9 +44,9 @@
     $stmt->bind_param("siiss", $nombre, $idproveedor, $idcategoria, $unidadmedida, $usuario);
 
     if ($stmt->execute()) {
-        echo "Operación exitosa";
+        echo "-1";
     } else {
-        echo "Error al ejecutar el procedimiento almacenado: " . $stmt->error;
+        echo "-2";
     }
 
     // Cerrar la conexión
