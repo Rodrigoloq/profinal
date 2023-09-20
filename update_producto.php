@@ -1,65 +1,43 @@
-<!DOCTYPE html>
-<html lang="en">
+<?php
+include("conexion.php");
 
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Insertar datos</title>
-</head>
+//invoca a la función de conexíón
 
-<body>
-    <h1>Actualizar los datos del producto en la bd</h1>
+$cn = fnconexion();
 
-    <hr>
+//recueprar datos del formulario html
 
-    <?php
+$idproducto = $_POST["Id_pro"];
 
-    //incluye el archivo de conexión al servidor y la bd
+$nombre = $_POST["Nom_pro"];
 
-    include("conexion.php");
+$idproveedor = $_POST["Id_prv"];
 
-    //invoca a la función de conexíón
+$idcategoria = $_POST["Id_cat"];
 
-    $cn = fnconexion();
+$unidadmedida = $_POST["Uni_med"];
 
-    //recueprar datos del formulario html
+$descontinuado = $_POST["Descontinuado"];
 
-    $idproducto = $_POST["Id_pro"];
+$estado= $_POST["Est_pro"];
 
-    $nombre = $_POST["Nom_pro"];
+$usuario = $_POST["Usu_Ult_Mod"];
 
-    $idproveedor = $_POST["Id_prv"];
+//agregar una sentencia sql para insertar datos
 
-    $idcategoria = $_POST["Id_cat"];
+$sql = "CALL Sp_Update_Producto(?, ?, ?, ?, ?, ?, ?, ?)";
 
-    $unidadmedida = $_POST["Uni_med"];
+$stmt = $cn->prepare($sql);
 
-    $descontinuado = $_POST["Descontinuado"];
+$stmt->bind_param("isiisiis", $idproducto, $nombre, $idproveedor, $idcategoria, $unidadmedida,$descontinuado, $estado, $usuario);
 
-    $estado= $_POST["Est_pro"];
+if ($stmt->execute()) {
+    echo "-1";
+} else {
+    echo "-2";
+}
 
-    $usuario = $_POST["Usu_Ult_Mod"];
-
-    //agregar una sentencia sql para insertar datos
-
-    $sql = "CALL Sp_Update_Producto(?, ?, ?, ?, ?, ?, ?, ?)";
-
-    $stmt = $cn->prepare($sql);
-
-    $stmt->bind_param("isiisiis", $idproducto, $nombre, $idproveedor, $idcategoria, $unidadmedida,$descontinuado, $estado, $usuario);
-
-    if ($stmt->execute()) {
-        echo "-1";
-    } else {
-        echo "-2";
-    }
-
-    // Cerrar la conexión
-    $stmt->close();
-    $cn->close();
-
-    ?>
-</body>
-
-</html>
+// Cerrar la conexión
+$stmt->close();
+$cn->close();
+?>

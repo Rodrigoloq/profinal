@@ -1,72 +1,50 @@
-<!DOCTYPE html>
-<html lang="en">
+<?php
+include("conexion.php");
 
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Insertar datos</title>
-</head>
+//invoca a la función de conexíón
 
-<body>
-    <h1>Actualizar los datos del proveedor en la bd</h1>
+$cn = fnconexion();
 
-    <hr>
+//recueprar datos del formulario html
+$idproveedor = $_POST["Id_prv"];
 
-    <?php
+$nombre = $_POST["Nombre"];
 
-    //incluye el archivo de conexión al servidor y la bd
+$apellido = $_POST["Apellido"];
 
-    include("conexion.php");
+$nombrecontacto = $_POST["Nom_cont"];
 
-    //invoca a la función de conexíón
+$cargocontacto = $_POST["Cargo_cont"];
 
-    $cn = fnconexion();
+$estado = $_POST["Est_prv"];
 
-    //recueprar datos del formulario html
-    $idproveedor = $_POST["Id_prv"];
+$direccion = $_POST["Direccion"];
 
-    $nombre = $_POST["Nombre"];
+$pais = $_POST["Pais"];
 
-    $apellido = $_POST["Apellido"];
+$departamento = $_POST["Departamento"];
 
-    $nombrecontacto = $_POST["Nom_cont"];
+$provincia = $_POST["Provincia"];
 
-    $cargocontacto = $_POST["Cargo_cont"];
+$distrito = $_POST["Distrito"];
 
-    $estado = $_POST["Est_prv"];
+$usuario = $_POST["Usu_Ult_Mod"];
 
-    $direccion = $_POST["Direccion"];
+//agregar una sentencia sql para insertar datos
 
-    $pais = $_POST["Pais"];
+$sql = "CALL Sp_Update_Proveedor(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
-    $departamento = $_POST["Departamento"];
+$stmt = $cn->prepare($sql);
 
-    $provincia = $_POST["Provincia"];
+$stmt->bind_param("issssissssss", $idproveedor, $nombre, $apellido, $nombrecontacto, $cargocontacto, $estado, $direccion, $pais, $departamento, $provincia, $distrito, $usuario);
 
-    $distrito = $_POST["Distrito"];
+if ($stmt->execute()) {
+    echo "-1";
+} else {
+    echo "-2";
+}
 
-    $usuario = $_POST["Usu_Ult_Mod"];
-
-    //agregar una sentencia sql para insertar datos
-
-    $sql = "CALL Sp_Update_Proveedor(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
-
-    $stmt = $cn->prepare($sql);
-
-    $stmt->bind_param("issssissssss", $idproveedor, $nombre, $apellido, $nombrecontacto, $cargocontacto, $estado, $direccion, $pais, $departamento, $provincia, $distrito, $usuario);
-
-    if ($stmt->execute()) {
-        echo "-1";
-    } else {
-        echo "-2";
-    }
-
-    // Cerrar la conexión
-    $stmt->close();
-    $cn->close();
-
-    ?>
-</body>
-
-</html>
+// Cerrar la conexión
+$stmt->close();
+$cn->close();
+?>

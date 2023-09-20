@@ -1,69 +1,47 @@
-<!DOCTYPE html>
-<html lang="en">
+<?php
+include("conexion.php");
 
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Insertar datos</title>
-</head>
+//invoca a la función de conexíón
 
-<body>
-    <h1>Registrar los datos del proveedor en la bd</h1>
+$cn = fnconexion();
 
-    <hr>
+//recueprar datos del formulario html
 
-    <?php
+$nombre = $_POST["Nombre"];
 
-    //incluye el archivo de conexión al servidor y la bd
+$apellido = $_POST["Apellido"];
 
-    include("conexion.php");
+$nombrecontacto = $_POST["Nom_cont"];
 
-    //invoca a la función de conexíón
+$cargocontacto = $_POST["Cargo_cont"];
 
-    $cn = fnconexion();
+$direccion = $_POST["Direccion"];
 
-    //recueprar datos del formulario html
+$pais = $_POST["Pais"];
 
-    $nombre = $_POST["Nombre"];
+$departamento = $_POST["Departamento"];
 
-    $apellido = $_POST["Apellido"];
+$provincia = $_POST["Provincia"];
 
-    $nombrecontacto = $_POST["Nom_cont"];
+$distrito = $_POST["Distrito"];
 
-    $cargocontacto = $_POST["Cargo_cont"];
+$usuario = $_POST["Usu_Registro"];
 
-    $direccion = $_POST["Direccion"];
+//agregar una sentencia sql para insertar datos
 
-    $pais = $_POST["Pais"];
+$sql = "CALL Sp_Insert_Proveedor(?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
-    $departamento = $_POST["Departamento"];
+$stmt = $cn->prepare($sql);
 
-    $provincia = $_POST["Provincia"];
+$stmt->bind_param("ssssssssss", $nombre, $apellido, $nombrecontacto, $cargocontacto, $direccion, $pais, $departamento, $provincia, $distrito, $usuario);
 
-    $distrito = $_POST["Distrito"];
+if ($stmt->execute()) {
+    echo "-1";
+} else {
+    echo "-2";
+}
 
-    $usuario = $_POST["Usu_Registro"];
-
-    //agregar una sentencia sql para insertar datos
-
-    $sql = "CALL Sp_Insert_Proveedor(?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
-
-    $stmt = $cn->prepare($sql);
-
-    $stmt->bind_param("ssssssssss", $nombre, $apellido, $nombrecontacto, $cargocontacto, $direccion, $pais, $departamento, $provincia, $distrito, $usuario);
-
-    if ($stmt->execute()) {
-        echo "-1";
-    } else {
-        echo "-2";
-    }
-
-    // Cerrar la conexión
-    $stmt->close();
-    $cn->close();
-
-    ?>
-</body>
-
-</html>
+// Cerrar la conexión
+$stmt->close();
+$cn->close();
+?>
