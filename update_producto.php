@@ -17,6 +17,8 @@ $idcategoria = $_POST["Id_cat"];
 
 $unidadmedida = $_POST["Uni_med"];
 
+$stockminimo = $_POST["Stock_minimo"];
+
 $descontinuado = $_POST["Descontinuado"];
 
 $estado= $_POST["Est_pro"];
@@ -25,11 +27,11 @@ $usuario = $_POST["Usu_Ult_Mod"];
 
 //agregar una sentencia sql para insertar datos
 
-$sql = "CALL Sp_Update_Producto(?, ?, ?, ?, ?, ?, ?, ?)";
+$sql = "CALL Sp_Update_Producto(?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
 $stmt = $cn->prepare($sql);
 
-$stmt->bind_param("isiisiis", $idproducto, $nombre, $idproveedor, $idcategoria, $unidadmedida,$descontinuado, $estado, $usuario);
+$stmt->bind_param("isiisiiis", $idproducto, $nombre, $idproveedor, $idcategoria, $unidadmedida, $stockminimo, $descontinuado, $estado, $usuario);
 
 if ($stmt->execute()) {
     echo "-1";
