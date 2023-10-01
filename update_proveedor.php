@@ -36,7 +36,7 @@ $usuario = $_POST["Usu_Ult_Mod"];
 
 //agregar una sentencia sql para insertar datos
 
-$sql = "CALL Sp_Update_Proveedor(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?. ?)";
+$sql = "CALL Sp_Update_Proveedor(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
 $stmt = $cn->prepare($sql);
 
