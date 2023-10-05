@@ -21,23 +21,17 @@ $telefono = $_POST["Telefono"];
 
 $direccion = $_POST["Direccion"];
 
-$pais = $_POST["Pais"];
-
-$departamento = $_POST["Departamento"];
-
-$provincia = $_POST["Provincia"];
-
 $distrito = $_POST["Distrito"];
 
 $usuario = $_POST["Usu_Registro"];
 
 //agregar una sentencia sql para insertar datos
 
-$sql = "CALL Sp_Insert_Proveedor(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+$sql = "CALL Sp_Insert_Proveedor(?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
 $stmt = $cn->prepare($sql);
 
-$stmt->bind_param("ssssssssssss", $nombre, $apellido, $nombrecontacto, $cargocontacto, $ruc, $telefono, $direccion, $pais, $departamento, $provincia, $distrito, $usuario);
+$stmt->bind_param("sssssssss", $nombre, $apellido, $nombrecontacto, $cargocontacto, $ruc, $telefono, $direccion, $distrito, $usuario);
 
 if ($stmt->execute()) {
     echo "-1";
