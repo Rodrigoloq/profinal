@@ -7,7 +7,7 @@ $cn = fnconexion();
 
 //recueprar datos del formulario html
 
-$nombre = $_POST["Nom_pro"];
+$nombre = $_POST["Nom_cat"];
 
 $descategoria = $_POST["Des_Cat"];
 
