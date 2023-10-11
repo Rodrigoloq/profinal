@@ -4,7 +4,7 @@ include("conexion.php");
 
 $conexion = fnconexion();
 
-$sql = 'SELECT * FROM Tb_Categorias';
+$sql = 'call Sp_Listar_Categorias()';
 
 $resultado = $conexion->query($sql);
 
