@@ -23,9 +23,9 @@ $stmt = $cn->prepare($sql);
 
 $stmt->bind_param("isss", $idempleado, $fecha, $detalles, $usuario);
 
-$error = $cn->error;
-
 $stmt->execute();
+
+$error = $cn->error;
 
 if($error){
     echo "-1";
