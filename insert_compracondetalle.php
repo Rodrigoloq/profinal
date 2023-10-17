@@ -23,9 +23,13 @@ $stmt = $cn->prepare($sql);
 
 $stmt->bind_param("isss", $idempleado, $fecha, $detalles, $usuario);
 
-if ($stmt->execute()) {
+$error = $cn->error;
+
+$stmt->execute();
+
+if($error){
     echo "-1";
-} else {
+}else{
     echo "-2";
 }
 
