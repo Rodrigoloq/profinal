@@ -17,9 +17,10 @@ $mensaje = '';
 $cn->begin_transaction();
 
 // 1. Inserta un registro en la tabla "Compra"
-$sql = "call Sp_Insert_Compra(?, ?, ?)";
+$sql = "INSERT INTO Tb_Compra(IdEmpleado,FechaCompra,Estado_Compra,Fec_Registro,Usu_Registro,Fec_Ult_Mod,Usu_Ult_Mod)
+VALUES (?,?,?,?,?,?,?);";
 $stmt = $cn->prepare($sql);
-$stmt->bind_param("iss", $idempleado, $fecha, $usuario);
+$stmt->bind_param("isissss", $idempleado, $fecha, 0, $fecha, $usuario, null, null);
 
 if ($stmt->execute()) {
     // Éxito en la inserción de Compra
