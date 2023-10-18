@@ -21,7 +21,7 @@ $idOrden = $cn->insert_id;
 $sql = "CALL Sp_InsertarDetalleOrden(?,?,?,?)";
 $stmt = $cn->prepare($sql);
 
-foreach ($_POST['detalles'] as $detalles) {
+foreach ((array)$_POST['detalles'] as $detalles) {
     $idProducto = $detalles['id_producto'];
     $cantidad = $detalles['cantidad'];
 
