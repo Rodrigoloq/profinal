@@ -10,6 +10,12 @@ $usuario = $_POST["Usu_registro"];
 
 $detalles_json = $_POST['detalles'];
 
+$estado = 0;
+
+$fec_ult_mod = null;
+
+$usu_ult_mod = null;
+
 $detalles = json_decode($detalles_json, true);
 
 $mensaje = '';
@@ -20,7 +26,7 @@ $cn->begin_transaction();
 $sql = "INSERT INTO Tb_Compra(IdEmpleado,FechaCompra,Estado_Compra,Fec_Registro,Usu_Registro,Fec_Ult_Mod,Usu_Ult_Mod)
 VALUES (?,?,?,?,?,?,?);";
 $stmt = $cn->prepare($sql);
-$stmt->bind_param("isissss", $idempleado, $fecha, 0, $fecha, $usuario, "", "");
+$stmt->bind_param("isissss", $idempleado, $fecha, $estado, $fecha, $usuario, $fec_ult_mod, $usu_ult_mod);
 
 if ($stmt->execute()) {
     // Éxito en la inserción de Compra
