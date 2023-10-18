@@ -10,7 +10,7 @@ $usuario = $_POST["Usu_registro"];
 
 $detalles_json = $_POST['detalles'];
 
-$detalles = json_decode($detalles_json);
+$detalles = json_decode($detalles_json, true);
 
 $cn->begin_transaction();
 
