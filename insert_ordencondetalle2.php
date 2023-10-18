@@ -8,6 +8,10 @@ $fecha = $_POST["fecha"];
 
 $usuario = $_POST["Usu_registro"];
 
+$detalles_json = $_POST['detalles'];
+
+$detalles = json_decode($detalles_json);
+
 $cn->begin_transaction();
 
 $sql = "INSERT INTO Tb_Orden (IdEmpleado, FechaOrden) VALUES (?, ?)";
@@ -21,9 +25,9 @@ $idOrden = $cn->insert_id;
 $sql = "CALL Sp_InsertarDetalleOrden(?,?,?,?)";
 $stmt = $cn->prepare($sql);
 
-foreach ((array)$_POST['detalles'] as $detalles) {
-    $idProducto = $detalles['id_producto'];
-    $cantidad = $detalles['cantidad'];
+foreach ($detalles as $detalle) {
+    $idProducto = $detalle['id_producto'];
+    $cantidad = $detalle['cantidad'];
 
     $stmt->bind_param("iiis", $idOrden, $idProducto, $cantidad, $usuario);
     if ($stmt->execute()) {
