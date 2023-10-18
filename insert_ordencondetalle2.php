@@ -14,7 +14,7 @@ $detalles = json_decode($detalles_json, true);
 
 $mensaje = '';
 
-$conn->begin_transaction();
+$cn->begin_transaction();
 
 // 1. Inserta un registro en la tabla "Compra"
 $sql = "INSERT INTO Tb_Orden (IdEmpleado, FechaOrden) VALUES (?, ?)";
