@@ -26,7 +26,11 @@ foreach ($_POST['detalles'] as $detalles) {
     $cantidad = $detalles['cantidad'];
 
     $stmt->bind_param("iiis", $idOrden, $idProducto, $cantidad, $usuario);
-    $stmt->execute();
+    if ($stmt->execute()) {
+        echo "-1";
+    } else {
+        echo "-2";
+    }
 }
 
 $stmt->close();
