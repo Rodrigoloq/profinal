@@ -20,7 +20,7 @@ $cn->begin_transaction();
 $sql = "INSERT INTO Tb_Compra(IdEmpleado,FechaCompra,Estado_Compra,Fec_Registro,Usu_Registro,Fec_Ult_Mod,Usu_Ult_Mod)
 VALUES (?,?,?,?,?,?,?);";
 $stmt = $cn->prepare($sql);
-$stmt->bind_param("isissss", $idempleado, $fecha, 0, $fecha, $usuario, null, null);
+$stmt->bind_param("isissss", $idempleado, $fecha, 0, $fecha, $usuario, "", "");
 
 if ($stmt->execute()) {
     // Éxito en la inserción de Compra
