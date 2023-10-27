@@ -6,7 +6,7 @@ $conexion = fnconexion();
 
 $nombre = $_POST["nombre"];
 
-$sql = "call Sp_Consultar_Productos_StockActual($nombre)";
+$sql = "call Sp_Consultar_Productos_StockActual('$nombre')";
 
 $resultado = $conexion->query($sql);
 
