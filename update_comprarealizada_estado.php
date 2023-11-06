@@ -13,13 +13,17 @@ $estado = $_POST["estado_ingreso"];
 
 $usuario = $_POST["Usu_registro"];
 
+$fecha_lote = $POST["fecha_lote"];
+
+$fecha_vencimiento = $POST["fecha_vencimiento"];
+
 //agregar una sentencia sql para insertar datos
 
-$sql = "CALL Sp_Update_CompraRealizada_Estado(?, ?, ?)";
+$sql = "CALL Sp_Update_CompraRealizada_Estado(?, ?, ?, ?, ?)";
 
 $stmt = $cn->prepare($sql);
 
-$stmt->bind_param("iis", $idcompra, $estado, $usuario);
+$stmt->bind_param("iisss", $idcompra, $estado, $usuario, $fecha_lote, $fecha_vencimiento);
 
 if ($stmt->execute()) {
     echo "-1";
