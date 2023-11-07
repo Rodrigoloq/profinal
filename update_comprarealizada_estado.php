@@ -13,9 +13,9 @@ $estado = $_POST["estado_ingreso"];
 
 $usuario = $_POST["Usu_registro"];
 
-$fecha_lote = $POST["fecha_lote"];
+$fecha_lote = $_POST["fecha_lote"];
 
-$fecha_vencimiento = $POST["fecha_vencimiento"];
+$fecha_vencimiento = $_POST["fecha_vencimiento"];
 
 //agregar una sentencia sql para insertar datos
 
