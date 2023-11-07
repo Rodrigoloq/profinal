@@ -36,16 +36,17 @@ if ($stmt->execute()) {
     $idCompra = $cn->insert_id;
 
     // 2. Inserta registros en la tabla "Detalle_Compra"
-    $sql = "CALL Sp_InsertarDetalleCompra(?, ?, ?, ?, ?)";
+    $sql = "CALL Sp_InsertarDetalleCompra(?, ?, ?, ?, ?, ?)";
     $stmt = $cn->prepare($sql);
 
     // Supongamos que tienes un bucle para procesar varios productos
     foreach ($detalles as $detalle) {
         $idProducto = $detalle['id_producto'];
+        $idProveedor = $detalle['id_proveedor'];
         $preciounitario = $detalle['precio_unitario'];
         $cantidad = $detalle['cantidad'];
 
-        $stmt->bind_param("iidis", $idCompra, $idProducto, $preciounitario, $cantidad, $usuario);
+        $stmt->bind_param("iiidis", $idCompra, $idProducto, $idProveedor, $preciounitario, $cantidad, $usuario);
 
         if (!$stmt->execute()) {
             // Error en la inserción de Detalle_Compra

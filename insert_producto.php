@@ -9,21 +9,23 @@ $cn = fnconexion();
 
 $nombre = $_POST["Nom_pro"];
 
-$idproveedor = $_POST["Id_prv"];
-
 $idcategoria = $_POST["Id_cat"];
 
 $unidadmedida = $_POST["Uni_med"];
+
+$stockminimo = $_POST["stock_min"];
+
+$justificacion = $_POST["justificacion"];
 
 $usuario = $_POST["Usu_registro"];
 
 //agregar una sentencia sql para insertar datos
 
-$sql = "CALL Sp_Insert_Producto(?, ?, ?, ?, ?)";
+$sql = "CALL Sp_Insert_Producto(?, ?, ?, ?, ?, ?)";
 
 $stmt = $cn->prepare($sql);
 
-$stmt->bind_param("siiss", $nombre, $idproveedor, $idcategoria, $unidadmedida, $usuario);
+$stmt->bind_param("sisiss", $nombre, $idcategoria, $unidadmedida, $stockminimo, $justificacion, $usuario);
 
 if ($stmt->execute()) {
     echo "-1";

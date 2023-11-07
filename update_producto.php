@@ -11,13 +11,13 @@ $idproducto = $_POST["Id_pro"];
 
 $nombre = $_POST["Nom_pro"];
 
-$idproveedor = $_POST["Id_prv"];
-
 $idcategoria = $_POST["Id_cat"];
 
 $unidadmedida = $_POST["Uni_med"];
 
 $stockminimo = $_POST["Stock_minimo"];
+
+$justificacion = $_POST["justificacion"];
 
 $descontinuado = $_POST["Descontinuado"];
 
@@ -31,7 +31,7 @@ $sql = "CALL Sp_Update_Producto(?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
 $stmt = $cn->prepare($sql);
 
-$stmt->bind_param("isiisiiis", $idproducto, $nombre, $idproveedor, $idcategoria, $unidadmedida, $stockminimo, $descontinuado, $estado, $usuario);
+$stmt->bind_param("isisisiis", $idproducto, $nombre, $idcategoria, $unidadmedida, $stockminimo, $justificacion, $descontinuado, $estado, $usuario);
 
 if ($stmt->execute()) {
     echo "-1";
