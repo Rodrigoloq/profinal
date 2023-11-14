@@ -6,7 +6,7 @@ $conexion = fnconexion();
 
 $login = $_POST["login"];
 
-$sql = "call Sp_Consultar_UsuarioEmpleado($login)";
+$sql = "call Sp_Consultar_UsuarioEmpleado('$login')";
 
 $resultado = $conexion->query($sql);
 
