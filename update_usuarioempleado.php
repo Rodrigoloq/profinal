@@ -41,7 +41,7 @@ $usuario = $_POST["usu_ult_mod"];
 
 //agregar una sentencia sql para insertar datos
 
-$sql = "CALL Sp_Insertar_UsuarioEmpleado(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+$sql = "CALL Sp_Update_UsuarioEmpleado(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
 $stmt = $cn->prepare($sql);
 
