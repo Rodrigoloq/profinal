@@ -39,7 +39,7 @@ $nivel = $_POST["nivel_usu"];
 
 //agregar una sentencia sql para insertar datos
 
-$sql = "CALL Sp_Insertar_UsuarioEmpleado(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+$sql = "CALL Sp_Insertar_UsuarioEmpleado(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
 $stmt = $cn->prepare($sql);
 
