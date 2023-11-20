@@ -15,6 +15,8 @@ $cargo= $_POST["cargo"];
 
 $fecha_nac = $_POST["fecha_nac"];
 
+$genero = $_POST["genero"];
+
 $fecha_ing = $_POST["fecha_ing"];
 
 $direccion = $_POST["direccion"];
@@ -41,7 +43,7 @@ $sql = "CALL Sp_Insertar_UsuarioEmpleado(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, 
 
 $stmt = $cn->prepare($sql);
 
-$stmt->bind_param("ssssssissssssi", $nombre, $apellido, $cargo, $fecha_nac, $fecha_ing, 
+$stmt->bind_param("ssssississssssi", $nombre, $apellido, $cargo, $fecha_nac, $genero, $fecha_ing, 
 $direccion, $tipo_doc, $num_doc, $distrito, $telefono, $login, $usuario, $password, $nivel);
 
 if ($stmt->execute()) {

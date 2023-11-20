@@ -17,6 +17,8 @@ $cargo= $_POST["cargo"];
 
 $fecha_nac = $_POST["fecha_nac"];
 
+$genero = $_POST["genero"];
+
 $fecha_ing = $_POST["fecha_ing"];
 
 $direccion = $_POST["direccion"];
@@ -45,7 +47,7 @@ $sql = "CALL Sp_Update_UsuarioEmpleado(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?,
 
 $stmt = $cn->prepare($sql);
 
-$stmt->bind_param("issssssisssssiis", $idempleado, $nombre, $apellido, $cargo, $fecha_nac, $fecha_ing, 
+$stmt->bind_param("issssississsssiis", $idempleado, $nombre, $apellido, $cargo, $fecha_nac, $genero, $fecha_ing, 
 $direccion, $tipo_doc, $num_doc, $distrito, $telefono, $login, $password, $nivel, $estado, $usuario);
 
 if ($stmt->execute()) {
